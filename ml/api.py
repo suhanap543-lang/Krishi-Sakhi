@@ -1,10 +1,15 @@
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module="xgboost")
+warnings.filterwarnings("ignore", category=UserWarning, module="sklearn")
+
 import joblib
 import numpy as np
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from typing import List, Dict, Any, Optional
 import os
+import uvicorn
 
 app = FastAPI(title="Crop Recommendation API", version="1.0.0")
 
@@ -54,6 +59,8 @@ class CropInput(BaseModel):
 
 
 class CropOutput(BaseModel):
+    model_config = ConfigDict(protected_namespaces=())
+
     recommended_crop: str
     confidence: float
     top3: List[Dict[str, Any]]
@@ -278,3 +285,11 @@ def predict_crop(data: CropInput):
     except Exception as e:
         print(f"❌ Prediction error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+if __name__ == "__main__":
+    print("🚀 Starting Crop Recommendation API on port 8001...")
+    uvicorn.run(app, host="0.0.0.0", port=8001)

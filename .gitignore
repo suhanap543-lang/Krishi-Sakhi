@@ -84,6 +84,7 @@ env/
 ml/*.pkl
 ml/*.h5
 ml/*.pt
+ml/*.pth
 ml/*.onnx
 
 # Backend test/debug files
@@ -103,6 +104,14 @@ backend/test_disease.js
 backend/test_gemini.js
 backend/test_insights.js
 backend/test_kindwise.js
+backend/tsc_full.txt
+backend/tsc_output.txt
+
+# Frontend debug/temp files
+frontend/line_hex.txt
+frontend/ts_errors.txt
+frontend/ts_errors_utf8.txt
+frontend/weather_bytes.txt
 
 # Package lock (optional — keep package-lock if you want reproducible installs)
 # package-lock.json
