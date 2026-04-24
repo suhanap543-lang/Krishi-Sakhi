@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import TranslatedText from './TranslatedText';
 
 const logoUrl = 'https://cdn.builder.io/api/v1/image/assets%2Fc21b63e7074b4525a6e3164505c4a230%2Fac56160c2de4493283652bdd34caa4b0?format=webp&width=300';
@@ -67,6 +67,9 @@ export default function Sidebar() {
     { key: 'weather', label: 'Weather', icon: icons.weather },
     { key: 'market', label: 'Market', icon: icons.market },
     { key: 'smart-recommendations', label: 'Smart Recs', icon: icons.smartRecommendations },
+    { key: 'soil-health', label: 'Soil Health', icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19 14.5l-2.47 2.47a3.25 3.25 0 0 1-2.295.951h-4.47a3.25 3.25 0 0 1-2.295-.951L5 14.5m14 0V17a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-2.5" /></svg>
+    ) },
     { key: 'schemes', label: 'Schemes', icon: (<svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M4 7V4h16v3" /><path d="M9 20h6" /><path d="M12 4v16" /><path d="M2 20h20" /></svg>) },
     { key: 'feedback', label: 'Feedback', icon: icons.profile },
     { key: 'profile', label: 'Profile', icon: icons.profile }

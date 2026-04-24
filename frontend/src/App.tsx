@@ -16,6 +16,7 @@ import Officers from './pages/Officers';
 import Feedback from './pages/Feedback';
 import Schemes from './pages/Schemes';
 import SmartRecommendationsPage from './pages/SmartRecommendationsPage';
+import SoilHealth from './pages/SoilHealth';
 import FarmerVideoCall from './pages/FarmerVideoCall';
 import MobileNav from './components/MobileNav';
 import { LanguageProvider } from './context/LanguageContext';
@@ -38,6 +39,7 @@ function getRoute() {
   if (h.startsWith('/officers')) return '/officers';
   if (h.startsWith('/feedback')) return '/feedback';
   if (h.startsWith('/smart-recommendations')) return '/smart-recommendations';
+  if (h.startsWith('/soil-health')) return '/soil-health';
   if (h.startsWith('/schemes')) return '/schemes';
   if (h.startsWith('/video-call')) return '/video-call';
   return '/';
@@ -90,6 +92,8 @@ export default function App() {
       page = <Feedback />; break;
     case '/smart-recommendations':
       page = <SmartRecommendationsPage />; break;
+    case '/soil-health':
+      page = <SoilHealth />; break;
     case '/schemes':
       page = <Schemes />; break;
     case '/video-call':

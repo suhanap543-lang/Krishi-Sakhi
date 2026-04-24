@@ -46,3 +46,67 @@ export const getRecommendationHistory = async (farmerId) => {
   if (!res.ok) throw new Error("Failed to load history");
   return res.json();
 };
+
+// ---------------------------------------------------------------------------
+// Soil Health Assessment
+// ---------------------------------------------------------------------------
+export const getSoilHealthAssessment = async (soilData: {
+  N: number; P: number; K: number; ph: number;
+  ec: number; oc: number; S: number; zn: number;
+  fe: number; cu: number; Mn: number; B: number;
+}) => {
+  const res = await fetch("/api/soil-health/assess", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(soilData),
+  });
+
+  const text = await res.text();
+  if (!text) throw new Error("Server returned empty response");
+
+  let json;
+  try {
+    json = JSON.parse(text);
+  } catch {
+    throw new Error(`Invalid JSON from server: ${text.slice(0, 200)}`);
+  }
+
+  if (!res.ok) {
+    throw new Error(json.message || "Soil health assessment failed");
+  }
+
+  return json;
+};
+
+// ---------------------------------------------------------------------------
+// Crop Productivity Optimization (integrated Soil + Crop analysis)
+// ---------------------------------------------------------------------------
+export const getCropProductivityAnalysis = async (soilData: {
+  N: number; P: number; K: number; ph: number;
+  ec: number; oc: number; S: number; zn: number;
+  fe: number; cu: number; Mn: number; B: number;
+  lat?: number; lon?: number;
+  userState?: string; userDistrict?: string;
+}) => {
+  const res = await fetch("/api/crop-productivity/analyze", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(soilData),
+  });
+
+  const text = await res.text();
+  if (!text) throw new Error("Server returned empty response");
+
+  let json;
+  try {
+    json = JSON.parse(text);
+  } catch {
+    throw new Error(`Invalid JSON from server: ${text.slice(0, 200)}`);
+  }
+
+  if (!res.ok) {
+    throw new Error(json.message || "Crop productivity analysis failed");
+  }
+
+  return json;
+};

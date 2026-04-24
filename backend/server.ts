@@ -22,6 +22,8 @@ import chatRoutes from './routes/chatRoutes';
 import diseaseRoutes from './routes/diseaseRoutes';
 import sarvamRoutes from './routes/sarvamRoutes';
 import consultantRoutes from './routes/consultantRoutes';
+import soilHealthRoutes from './routes/soilHealthRoutes';
+import cropProductivityRoutes from './routes/cropProductivityRoutes';
 import { seedGlobalConsultants } from './controllers/officerController';
 
 // ─── Create Express App ─────────────────────────────────────────────
@@ -143,6 +145,8 @@ app.use('/api/chatbot', chatRoutes);
 app.use('/api/disease', diseaseRoutes);
 app.use('/api/sarvam', sarvamRoutes);
 app.use('/api/consultants', consultantRoutes);
+app.use('/api/soil-health', soilHealthRoutes);
+app.use('/api/crop-productivity', cropProductivityRoutes);
 
 // ─── Health Check ───────────────────────────────────────────────────
 app.get('/api/health', (req: Request, res: Response) => {

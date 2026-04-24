@@ -260,7 +260,12 @@ Respond ONLY with this exact JSON (no markdown fences):
         msg.includes("not found")         ||
         msg.includes("not supported")     ||
         msg.includes("deprecated")        ||
-        msg.includes("rate limit");
+        msg.includes("rate limit")        ||
+        msg.includes("503")               ||
+        msg.includes("500")               ||
+        msg.includes("unavailable")       ||
+        msg.includes("high demand")       ||
+        msg.includes("fetch failed");
 
       console.warn(`⚠️  Model ${modelName} failed: ${msg.slice(0, 120)}`);
       lastError = err;
